@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GaragisteProjetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CarnetEntretien">
+          <Key>
+            <PropertyRef Name="NumCarnet" />
+          </Key>
+          <Property Name="NumCarnet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImmatriculationVoiture" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Garagiste">
+          <Key>
+            <PropertyRef Name="IdGaragiste" />
+          </Key>
+          <Property Name="IdGaragiste" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomGaragiste" Type="varchar" MaxLength="254" />
+          <Property Name="DateFermeture" Type="datetime" />
+          <Property Name="DureeFermeture" Type="int" />
+          <Property Name="Capacite" Type="int" />
+        </EntityType>
+        <EntityType Name="Revision">
+          <Key>
+            <PropertyRef Name="NumCarnet" />
+          </Key>
+          <Property Name="NumCarnet" Type="int" Nullable="false" />
+          <Property Name="Libelle" Type="varchar" MaxLength="254" />
+          <Property Name="Kilometrage" Type="int" />
+          <Property Name="DureeIntervention" Type="int" />
+        </EntityType>
+        <EntityType Name="Voiture">
+          <Key>
+            <PropertyRef Name="ImmatriculationVoiture" />
+          </Key>
+          <Property Name="ImmatriculationVoiture" Type="int" Nullable="false" />
+          <Property Name="IdGaragiste" Type="int" />
+          <Property Name="ModeleVoiture" Type="varchar" MaxLength="254" />
+          <Property Name="MarqueVoiture" Type="varchar" MaxLength="254" />
+          <Property Name="TypeVoiture" Type="varchar" MaxLength="254" />
+          <Property Name="Carburant" Type="varchar" MaxLength="254" />
+        </EntityType>
+        <Association Name="FK_CARNETEN_ASSOCIATI_VOITURE">
+          <End Role="Voiture" Type="Self.Voiture" Multiplicity="1" />
+          <End Role="CarnetEntretien" Type="Self.CarnetEntretien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voiture">
+              <PropertyRef Name="ImmatriculationVoiture" />
+            </Principal>
+            <Dependent Role="CarnetEntretien">
+              <PropertyRef Name="ImmatriculationVoiture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REVISION_GENERALIS_CARNETEN">
+          <End Role="CarnetEntretien" Type="Self.CarnetEntretien" Multiplicity="1" />
+          <End Role="Revision" Type="Self.Revision" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CarnetEntretien">
+              <PropertyRef Name="NumCarnet" />
+            </Principal>
+            <Dependent Role="Revision">
+              <PropertyRef Name="NumCarnet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOITURE_ASSOCIATI_GARAGIST">
+          <End Role="Garagiste" Type="Self.Garagiste" Multiplicity="0..1" />
+          <End Role="Voiture" Type="Self.Voiture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagiste">
+              <PropertyRef Name="IdGaragiste" />
+            </Principal>
+            <Dependent Role="Voiture">
+              <PropertyRef Name="IdGaragiste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GaragisteProjetModelStoreContainer">
+          <EntitySet Name="CarnetEntretien" EntityType="Self.CarnetEntretien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Garagiste" EntityType="Self.Garagiste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Revision" EntityType="Self.Revision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voiture" EntityType="Self.Voiture" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CARNETEN_ASSOCIATI_VOITURE" Association="Self.FK_CARNETEN_ASSOCIATI_VOITURE">
+            <End Role="Voiture" EntitySet="Voiture" />
+            <End Role="CarnetEntretien" EntitySet="CarnetEntretien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REVISION_GENERALIS_CARNETEN" Association="Self.FK_REVISION_GENERALIS_CARNETEN">
+            <End Role="CarnetEntretien" EntitySet="CarnetEntretien" />
+            <End Role="Revision" EntitySet="Revision" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOITURE_ASSOCIATI_GARAGIST" Association="Self.FK_VOITURE_ASSOCIATI_GARAGIST">
+            <End Role="Garagiste" EntitySet="Garagiste" />
+            <End Role="Voiture" EntitySet="Voiture" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GaragisteProjetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CarnetEntretien">
+          <Key>
+            <PropertyRef Name="NumCarnet" />
+          </Key>
+          <Property Name="NumCarnet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImmatriculationVoiture" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Voiture" Relationship="Self.FK_CARNETEN_ASSOCIATI_VOITURE" FromRole="CarnetEntretien" ToRole="Voiture" />
+          <NavigationProperty Name="Revision" Relationship="Self.FK_REVISION_GENERALIS_CARNETEN" FromRole="CarnetEntretien" ToRole="Revision" />
+        </EntityType>
+        <EntityType Name="Garagiste">
+          <Key>
+            <PropertyRef Name="IdGaragiste" />
+          </Key>
+          <Property Name="IdGaragiste" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomGaragiste" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="DateFermeture" Type="DateTime" Precision="3" />
+          <Property Name="DureeFermeture" Type="Int32" />
+          <Property Name="Capacite" Type="Int32" />
+          <NavigationProperty Name="Voiture" Relationship="Self.FK_VOITURE_ASSOCIATI_GARAGIST" FromRole="Garagiste" ToRole="Voiture" />
+        </EntityType>
+        <EntityType Name="Revision">
+          <Key>
+            <PropertyRef Name="NumCarnet" />
+          </Key>
+          <Property Name="NumCarnet" Type="Int32" Nullable="false" />
+          <Property Name="Libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Kilometrage" Type="Int32" />
+          <Property Name="DureeIntervention" Type="Int32" />
+          <NavigationProperty Name="CarnetEntretien" Relationship="Self.FK_REVISION_GENERALIS_CARNETEN" FromRole="Revision" ToRole="CarnetEntretien" />
+        </EntityType>
+        <EntityType Name="Voiture">
+          <Key>
+            <PropertyRef Name="ImmatriculationVoiture" />
+          </Key>
+          <Property Name="ImmatriculationVoiture" Type="Int32" Nullable="false" />
+          <Property Name="IdGaragiste" Type="Int32" />
+          <Property Name="ModeleVoiture" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="MarqueVoiture" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="TypeVoiture" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Carburant" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CarnetEntretien" Relationship="Self.FK_CARNETEN_ASSOCIATI_VOITURE" FromRole="Voiture" ToRole="CarnetEntretien" />
+          <NavigationProperty Name="Garagiste" Relationship="Self.FK_VOITURE_ASSOCIATI_GARAGIST" FromRole="Voiture" ToRole="Garagiste" />
+        </EntityType>
+        <Association Name="FK_CARNETEN_ASSOCIATI_VOITURE">
+          <End Role="Voiture" Type="Self.Voiture" Multiplicity="1" />
+          <End Role="CarnetEntretien" Type="Self.CarnetEntretien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voiture">
+              <PropertyRef Name="ImmatriculationVoiture" />
+            </Principal>
+            <Dependent Role="CarnetEntretien">
+              <PropertyRef Name="ImmatriculationVoiture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REVISION_GENERALIS_CARNETEN">
+          <End Role="CarnetEntretien" Type="Self.CarnetEntretien" Multiplicity="1" />
+          <End Role="Revision" Type="Self.Revision" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CarnetEntretien">
+              <PropertyRef Name="NumCarnet" />
+            </Principal>
+            <Dependent Role="Revision">
+              <PropertyRef Name="NumCarnet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOITURE_ASSOCIATI_GARAGIST">
+          <End Role="Garagiste" Type="Self.Garagiste" Multiplicity="0..1" />
+          <End Role="Voiture" Type="Self.Voiture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Garagiste">
+              <PropertyRef Name="IdGaragiste" />
+            </Principal>
+            <Dependent Role="Voiture">
+              <PropertyRef Name="IdGaragiste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GaragisteProjetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CarnetEntretien" EntityType="Self.CarnetEntretien" />
+          <EntitySet Name="Garagiste" EntityType="Self.Garagiste" />
+          <EntitySet Name="Revision" EntityType="Self.Revision" />
+          <EntitySet Name="Voiture" EntityType="Self.Voiture" />
+          <AssociationSet Name="FK_CARNETEN_ASSOCIATI_VOITURE" Association="Self.FK_CARNETEN_ASSOCIATI_VOITURE">
+            <End Role="Voiture" EntitySet="Voiture" />
+            <End Role="CarnetEntretien" EntitySet="CarnetEntretien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REVISION_GENERALIS_CARNETEN" Association="Self.FK_REVISION_GENERALIS_CARNETEN">
+            <End Role="CarnetEntretien" EntitySet="CarnetEntretien" />
+            <End Role="Revision" EntitySet="Revision" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOITURE_ASSOCIATI_GARAGIST" Association="Self.FK_VOITURE_ASSOCIATI_GARAGIST">
+            <End Role="Garagiste" EntitySet="Garagiste" />
+            <End Role="Voiture" EntitySet="Voiture" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GaragisteProjetModelStoreContainer" CdmEntityContainer="GaragisteProjetEntities">
+          <EntitySetMapping Name="CarnetEntretien">
+            <EntityTypeMapping TypeName="GaragisteProjetModel.CarnetEntretien">
+              <MappingFragment StoreEntitySet="CarnetEntretien">
+                <ScalarProperty Name="NumCarnet" ColumnName="NumCarnet" />
+                <ScalarProperty Name="ImmatriculationVoiture" ColumnName="ImmatriculationVoiture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Garagiste">
+            <EntityTypeMapping TypeName="GaragisteProjetModel.Garagiste">
+              <MappingFragment StoreEntitySet="Garagiste">
+                <ScalarProperty Name="IdGaragiste" ColumnName="IdGaragiste" />
+                <ScalarProperty Name="NomGaragiste" ColumnName="NomGaragiste" />
+                <ScalarProperty Name="DateFermeture" ColumnName="DateFermeture" />
+                <ScalarProperty Name="DureeFermeture" ColumnName="DureeFermeture" />
+                <ScalarProperty Name="Capacite" ColumnName="Capacite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revision">
+            <EntityTypeMapping TypeName="GaragisteProjetModel.Revision">
+              <MappingFragment StoreEntitySet="Revision">
+                <ScalarProperty Name="NumCarnet" ColumnName="NumCarnet" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+                <ScalarProperty Name="Kilometrage" ColumnName="Kilometrage" />
+                <ScalarProperty Name="DureeIntervention" ColumnName="DureeIntervention" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Voiture">
+            <EntityTypeMapping TypeName="GaragisteProjetModel.Voiture">
+              <MappingFragment StoreEntitySet="Voiture">
+                <ScalarProperty Name="ImmatriculationVoiture" ColumnName="ImmatriculationVoiture" />
+                <ScalarProperty Name="IdGaragiste" ColumnName="IdGaragiste" />
+                <ScalarProperty Name="ModeleVoiture" ColumnName="ModeleVoiture" />
+                <ScalarProperty Name="MarqueVoiture" ColumnName="MarqueVoiture" />
+                <ScalarProperty Name="TypeVoiture" ColumnName="TypeVoiture" />
+                <ScalarProperty Name="Carburant" ColumnName="Carburant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

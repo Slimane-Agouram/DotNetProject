@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GaragisteProjetModelStoreContainer" CdmEntityContainer="GaragisteProjetEntities">
+    <EntitySetMapping Name="CarnetEntretien">
+      <EntityTypeMapping TypeName="GaragisteProjetModel.CarnetEntretien">
+        <MappingFragment StoreEntitySet="CarnetEntretien">
+          <ScalarProperty Name="NumCarnet" ColumnName="NumCarnet" />
+          <ScalarProperty Name="ImmatriculationVoiture" ColumnName="ImmatriculationVoiture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Garagiste">
+      <EntityTypeMapping TypeName="GaragisteProjetModel.Garagiste">
+        <MappingFragment StoreEntitySet="Garagiste">
+          <ScalarProperty Name="IdGaragiste" ColumnName="IdGaragiste" />
+          <ScalarProperty Name="NomGaragiste" ColumnName="NomGaragiste" />
+          <ScalarProperty Name="DateFermeture" ColumnName="DateFermeture" />
+          <ScalarProperty Name="DureeFermeture" ColumnName="DureeFermeture" />
+          <ScalarProperty Name="Capacite" ColumnName="Capacite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Revision">
+      <EntityTypeMapping TypeName="GaragisteProjetModel.Revision">
+        <MappingFragment StoreEntitySet="Revision">
+          <ScalarProperty Name="NumCarnet" ColumnName="NumCarnet" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+          <ScalarProperty Name="Kilometrage" ColumnName="Kilometrage" />
+          <ScalarProperty Name="DureeIntervention" ColumnName="DureeIntervention" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voiture">
+      <EntityTypeMapping TypeName="GaragisteProjetModel.Voiture">
+        <MappingFragment StoreEntitySet="Voiture">
+          <ScalarProperty Name="ImmatriculationVoiture" ColumnName="ImmatriculationVoiture" />
+          <ScalarProperty Name="IdGaragiste" ColumnName="IdGaragiste" />
+          <ScalarProperty Name="ModeleVoiture" ColumnName="ModeleVoiture" />
+          <ScalarProperty Name="MarqueVoiture" ColumnName="MarqueVoiture" />
+          <ScalarProperty Name="TypeVoiture" ColumnName="TypeVoiture" />
+          <ScalarProperty Name="Carburant" ColumnName="Carburant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
