@@ -13,69 +13,6 @@ namespace GaragisteProjet {
     public partial class _Default {
         
         /// <summary>
-        /// TextBoxNombreGaragistes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxNombreGaragistes;
-        
-        /// <summary>
-        /// TextBoxMarque control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxMarque;
-        
-        /// <summary>
-        /// AjouterVoiture control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AjouterVoiture;
-        
-        /// <summary>
-        /// GridviewGaragiste control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridviewGaragiste;
-        
-        /// <summary>
-        /// TextBoxNombreVoiture control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxNombreVoiture;
-        
-        /// <summary>
-        /// TextBoxMarqueVoiture control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxMarqueVoiture;
-        
-        /// <summary>
-        /// GridviewVoiture control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridviewVoiture;
-        
-        /// <summary>
         /// TextBoxDateDebut control.
         /// </summary>
         /// <remarks>
@@ -92,14 +29,5 @@ namespace GaragisteProjet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtenderDebut;
-        
-        /// <summary>
-        /// TextBoxDuration control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxDuration;
     }
 }

@@ -5,40 +5,83 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
    
 
-    <div class="row">
-        <table class="nav-justified">
+    <div class="row" data-ng-app="Garagiste_App" data-ng-controller="Ajout_Garagiste_Controller">
+        <table class="nav-justified table-striped">
             <tr>
                 <td>Nombre de garagistes:</td>
                 <td>
-                    <asp:TextBox ID="TextBoxNombreGaragistes" runat="server" ></asp:TextBox>
+                    <input ID="TextBoxNombreGaragistes" type="number" name="nombre" data-ng-model="item_Nombre" class="form-control" min="1" />
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBoxMarque"  runat="server"></asp:TextBox>
+                    <select  name="franchise" data-ng-model="item_Franchise" class="form-control" data-ng-options="franchise.name for franchise in franchises"><option value="">choisir une franchise</option></select>
+
                 </td>
-                <td><asp:Button runat="server" ID="AjouterVoiture" CssClass="btn btn-default" Text="Ajouter"/></td>
+                <td><button  ID="AjouterVoiture"  class="btn btn-primary"  data-ng-click="AddGaragiste()" onclick="return false;"><i class="fa fa-plus-square-o"></i>&nbsp;Ajouter</button></td>
             </tr>
-        <asp:GridView runat="server" ID="GridviewGaragiste"></asp:GridView>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+                <tr>
+                    <td class="">ID</td>
+                    <td class="">Nombre</td>
+                    <td class="">Franchise</td>
+                    <td></td>
+                </tr>
+               <tr data-ng-repeat="garagiste in garagistes">
+                   <td>{{$index+1}}</td>
+                   <td>{{garagiste.nombre}}</td>
+                   <td>{{garagiste.franchise}}</td>
+                   <td><button ng-click="deleteItem(garagistes, $index)"  class="btn btn-danger"><i class="fa fa-eraser"></i>&nbsp;Effacer</button></td>
+
+               </tr>
         <tr>
                 <td>Nombre de Voitures:</td>
                 <td>
-                    <asp:TextBox ID="TextBoxNombreVoiture" runat="server"></asp:TextBox>
+                    <input ID="TextBoxNombreVoiture" type="number" data-ng-model="nombreVoiture" class="form-control" min="1"/>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBoxMarqueVoiture" runat="server"></asp:TextBox>
+                    <select ID="TextBoxMarqueVoiture" class="form-control" data-ng-model="marqueVoiture" data-ng-options="voiture.name for voiture in models" ></select>
                 </td>
-            <td><asp:Button runat="server" CssClass="btn btn-default" Text="Ajouter"/></td>
+            <td><button class="btn btn-primary" ng-click="AddVoiture()" onclick="return false;"/><i class="fa fa-plus-square-o"></i>&nbsp;Ajouter</td>
             </tr>
-            <asp:GridView runat="server" ID="GridviewVoiture"></asp:GridView>
-
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="control-label">ID</td>
+                <td class="control-label">Nombre</td>
+                <td class="control-label">Voiture</td>
+                <td></td>
+                
+            </tr>
+            <tr data-ng-repeat="item in voitures">
+                <td>{{$index+1}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.voiture}}</td>
+                <td><button ng-click="deleteItem(voitures, $index)" class="btn btn-danger" onclick="return false;"><i class="fa fa-eraser"></i>&nbsp;Effacer</button></td>
+                
+            </tr>
             <tr>
                 <td>Date de début</td>
                 <td>
-                    <asp:TextBox ID="TextBoxDateDebut" runat="server"></asp:TextBox>
+                    <asp:TextBox type="text" ID="TextBoxDateDebut" data-ng-model="dateDebut"  CssClass="form-control" runat="server" />
                     <asp:CalendarExtender ID="CalendarExtenderDebut" runat="server" TargetControlID="TextBoxDateDebut" Format="dd/MM/yyyy"></asp:CalendarExtender>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBoxDuration" runat="server"></asp:TextBox>
+                    <input  class="form-control" type="number" min="1" data-ng-model="duration" placeholder="duration" ></input>
                 </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><asp:Button runat="server"  OnClientClick="return false;" CssClass="btn btn-success" Text="Lancer" ng-click="ExecuteLancer()" /></td>
+                <td></td>
+                <td></td>
             </tr>
             </table>
        

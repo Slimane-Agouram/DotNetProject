@@ -14,6 +14,17 @@ namespace DAL_GaragisteProjet.Models
     
     public partial class Garagiste
     {
+        public Garagiste(int idGaragiste, string nomGaragiste, DateTime? dateFermeture, int? dureeFermeture, int? capacite, ICollection<Voiture> voiture)
+        {
+            IdGaragiste = idGaragiste;
+            NomGaragiste = nomGaragiste;
+            DateFermeture = dateFermeture;
+            DureeFermeture = dureeFermeture;
+            Capacite = capacite;
+            Voiture = voiture;
+        }
+
+
         public Garagiste()
         {
             this.Voiture = new HashSet<Voiture>();
@@ -26,5 +37,8 @@ namespace DAL_GaragisteProjet.Models
         public Nullable<int> Capacite { get; set; }
     
         public virtual ICollection<Voiture> Voiture { get; set; }
+
+       
     }
+
 }

@@ -5,6 +5,5 @@ c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_Garagis
 c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.SqlServer.dll
 c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.xml
 c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.SqlServer.xml
-c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\obj\Debug\DAL_GaragisteProjet.csprojResolveAssemblyReference.cache
 c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\obj\Debug\DAL_GaragisteProjet.dll
 c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\obj\Debug\DAL_GaragisteProjet.pdb
