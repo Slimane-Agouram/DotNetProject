@@ -71,32 +71,23 @@ Garagiste_Controllers.controller('Stats_Controller', [
         $timeout(function () {
         	$scope.data=[];
             $scope.data = {
-                series: ['Sales', 'Income', 'Expense' ],
-                data: [{
-                    x: "Sales",
-                    y: [100, 500, 0],
-                    tooltip: "this is tooltip"
-                },
-                {
-                    x: "Not Sales",
-                    y: [300, 100, 100]
-                },
-                {
-                    x: "Tax",
-                    y: [351]
-                },
-                {
-                    x: "Not Tax",
-                    y: [54, 0, 879]
-                }]
+                series: [],
+                data: []
             };
         }, 100);
 
         $scope.addData=function(fromWeb)
         {
-        	for (var i = fromWeb.data.length - 1; i >= 0; i--) {
-        		$scope.data.data.push(fromWeb.data[i]);
+        	for (var i = $scope.temp.data.length - 1; i >= 0; i--) {
+        		$scope.data.data.push($scope.temp.data[i]);
         	};
+
+        	for (var i = $scope.temp.series.length - 1; i >= 0; i--) {
+        		$scope.data.series.push($scope.temp.series[i]);
+        	};
+
+
+        
         	
         };
 
@@ -104,34 +95,30 @@ Garagiste_Controllers.controller('Stats_Controller', [
         {
         	var resultat = [];
         	$http.get('api/Garagiste').success(function(data){
-        		$scope.data=data;
+        			for (var i = data.data.length - 1; i >= 0; i--) {
+        		if (data.data[i]===null) {
+        		data.data.splice(i,1);
+        	};
 
-        		//alert(JSON.stringify(data));
+        	};
+        	 alert(JSON.stringify(data));
+
+
+        		$scope.temp=data;
+				// alert(JSON.stringify($scope.data));
+
+
         	});
 
         };
 
-        // function recieveData()
-        // {
-        // 	var resultat = [];
-        // 	$http.get('api/Garagiste').success(function(data){
-        // 		$scope.data=data;
-        // 	});
-        // }
-
-        // function addData(fromWeb)
-        // {
-        // 	for (var i = fromWeb.data.length - 1; i >= 0; i--) {
-        // 		$scope.data.data.push(fromWeb.data[i]);
-        // 	};
-        	
-        // }
 
         $scope.reLoop=function()
         {
-	        	setInterval(function(){$scope.recieveData(); $scope.addData($scope.data);
+	        	setInterval(function(){$scope.recieveData();
+	        	 $scope.addData($scope.data);
 
-	        		alert(JSON.stringify($scope.data));
+	        		// alert(JSON.stringify($scope.data.series));
 	        	}, 1000);
 	        	
         };

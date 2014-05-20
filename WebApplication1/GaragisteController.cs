@@ -19,12 +19,19 @@ namespace GaragisteProjet
         // GET api/<controller>
         public Rootobject Get()
         {
-            string[] series = {"serie1","serie2"};
-            int [] valeurs = new int[2];
+
+            string[] series = {"serie1", "serie2", "serie3"};
+            int [] valeurs = new int[3];
             valeurs[0] = 1;
-            valeurs[1] = 1;
+            valeurs[1] = 2;
+            valeurs[2] = 3;
             Datum[] datum=new Datum[2];
             datum[0]=new Datum("x",valeurs,"tooltip");
+            int[] valeurs2 = new int[3];
+            valeurs2[0] = 3;
+            valeurs2[1] = 4;
+            valeurs2[2] = 1;
+            datum[1] = new Datum("y", valeurs2, "tooltip");
             return new Rootobject(series,datum);
         }
 

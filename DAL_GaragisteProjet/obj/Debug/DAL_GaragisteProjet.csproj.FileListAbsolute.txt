@@ -1,0 +1,10 @@
+C:\Users\slimane\Documents\GitHub\DotNetProject\DAL_GaragisteProjet\bin\Debug\DAL_GaragisteProjet.dll.config
+C:\Users\slimane\Documents\GitHub\DotNetProject\DAL_GaragisteProjet\bin\Debug\DAL_GaragisteProjet.dll
+C:\Users\slimane\Documents\GitHub\DotNetProject\DAL_GaragisteProjet\bin\Debug\DAL_GaragisteProjet.pdb
+C:\Users\slimane\Documents\GitHub\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.dll
+C:\Users\slimane\Documents\GitHub\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\slimane\Documents\GitHub\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.xml
+C:\Users\slimane\Documents\GitHub\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\slimane\Documents\GitHub\DotNetProject\DAL_GaragisteProjet\obj\Debug\DAL_GaragisteProjet.csprojResolveAssemblyReference.cache
+C:\Users\slimane\Documents\GitHub\DotNetProject\DAL_GaragisteProjet\obj\Debug\DAL_GaragisteProjet.dll
+C:\Users\slimane\Documents\GitHub\DotNetProject\DAL_GaragisteProjet\obj\Debug\DAL_GaragisteProjet.pdb
