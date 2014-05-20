@@ -65,61 +65,111 @@ Garagiste_Controllers.controller('Ajout_Garagiste_Controller', ['$scope','$http'
 
     }
 ]);
+//Controlleue de la page statistiques /////////////////////
 
 Garagiste_Controllers.controller('Stats_Controller', [
     '$scope', '$http','$timeout','$interval', function($scope, $http,$timeout,$interval) {
         $timeout(function () {
-        	$scope.data=[];
             $scope.data = {
                 series: [],
                 data: []
             };
+            $scope.temp={
+                series: [],
+                data: []
+            };
+
+             $scope.temp2={
+                series: [],
+                data: []
+            };
+
+            $scope.data2 = {
+                series: [],
+                data: []
+            };
+
+
+
         }, 100);
 
-        $scope.addData=function(fromWeb)
+        $scope.addData=function(data, temporary)
         {
-        	for (var i = $scope.temp.data.length - 1; i >= 0; i--) {
-        		$scope.data.data.push($scope.temp.data[i]);
-        	};
+        	if(data.series.length==0)
+        	{
 
-        	for (var i = $scope.temp.series.length - 1; i >= 0; i--) {
-        		$scope.data.series.push($scope.temp.series[i]);
-        	};
+        	for (var i = temporary.data.length - 1; i >= 0; i--) {
+        		data.data.push(temporary.data[i]);
+        	}
 
+        	for (var i = temporary.series.length - 1; i >= 0; i--) {
+        		data.series.push(temporary.series[i]);
+        	}
+        	$scope.demarrer=1;
+        	}
+        	else
+        	{
 
-        
-        	
+        	for (var k = temporary.data.length - 1; k >= 0; k--) {
+        		data.data.push(temporary.data[k]);
+        	};	
+
+        	}
+
+               	
         };
+
+       
 
         $scope.recieveData=function()
         {
-        	var resultat = [];
-        	$http.get('api/Garagiste').success(function(data){
+        
+
+			$http.get('api/Garagiste').success(function(data){
         			for (var i = data.data.length - 1; i >= 0; i--) {
         		if (data.data[i]===null) {
         		data.data.splice(i,1);
-        	};
-
-        	};
-        	 alert(JSON.stringify(data));
-
-
-        		$scope.temp=data;
-				// alert(JSON.stringify($scope.data));
-
+        	}
+        	        		$scope.temp=data;
+        	}
 
         	});
 
         };
 
 
+         $scope.recieveData2=function()
+        {
+        
+
+			$http.get('api/Garagiste').success(function(data){
+        			for (var i = data.data.length - 1; i >= 0; i--) {
+        		if (data.data[i]===null) {
+        		data.data.splice(i,1);
+        	}
+        	        		$scope.temp2=data;
+        	}
+
+        	});
+
+        };
+
+
+
+
+
         $scope.reLoop=function()
         {
-	        	setInterval(function(){$scope.recieveData();
-	        	 $scope.addData($scope.data);
+	        	setInterval(function(){
+	        	$scope.recieveData();
+	        	 $scope.addData($scope.data, $scope.temp);
 
-	        		// alert(JSON.stringify($scope.data.series));
-	        	}, 1000);
+	        	  $scope.recieveData2();
+	        	  $scope.addData($scope.data2, $scope.temp2);
+
+				alert('resultat1: ' + JSON.stringify($scope.data)  +"\n resultat2: "+ JSON.stringify($scope.data2));
+				//alert("resultat1; "+ JSON.stringify($scope.data))
+	        	}, 2000);
 	        	
         };
 
@@ -127,16 +177,29 @@ Garagiste_Controllers.controller('Stats_Controller', [
 
        
         $scope.chartType = 'line';
+        $scope.chartType2 = 'pie';
 
         $scope.config = {
-            labels: false,
-            title: "Not Products",
+            labels: true,
+            title: "",
             legend: {
                 display: true,
                 position: 'left'
             },
             innerRadius: 0
         };
+
+         $scope.config2 = {
+            labels: true,
+            title: "Graphe 2",
+            legend: {
+                display: true,
+                position: 'left'
+            },
+            innerRadius: 0
+        };
+
+
 
         
     }
