@@ -1,9 +1,0 @@
-c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\bin\Debug\DAL_GaragisteProjet.dll.config
-c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\bin\Debug\DAL_GaragisteProjet.dll
-c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\bin\Debug\DAL_GaragisteProjet.pdb
-c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.dll
-c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.SqlServer.dll
-c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.xml
-c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\bin\Debug\EntityFramework.SqlServer.xml
-c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\obj\Debug\DAL_GaragisteProjet.dll
-c:\users\slimypi\documents\visual studio 2013\Projects\DotNetProject\DAL_GaragisteProjet\obj\Debug\DAL_GaragisteProjet.pdb

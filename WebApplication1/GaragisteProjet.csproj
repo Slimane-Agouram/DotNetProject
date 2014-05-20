@@ -179,12 +179,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="fonts\Roboto-Light.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\angular-charts.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\d3.js" />
     <Content Include="Scripts\Garagiste_Controllers.js" />
     <Content Include="Scripts\Garagiste_Services.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -218,6 +222,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Stats.aspx" />
     <Content Include="TestApi.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -292,6 +297,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\data.cs" />
     <Compile Include="Models\transmission_Garagiste.cs" />
     <Compile Include="Models\Transmission_Result.cs" />
     <Compile Include="Models\transmission_Voiture.cs" />
@@ -317,6 +323,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Stats.aspx.cs">
+      <DependentUpon>Stats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stats.aspx.designer.cs">
+      <DependentUpon>Stats.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TestApi.aspx.cs">
       <DependentUpon>TestApi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

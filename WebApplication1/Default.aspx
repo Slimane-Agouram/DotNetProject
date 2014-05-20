@@ -25,9 +25,9 @@
                 <td></td>
             </tr>
                 <tr>
-                    <td class="">ID</td>
-                    <td class="">Nombre</td>
-                    <td class="">Franchise</td>
+                    <td class="titre">ID</td>
+                    <td class="titre">Nombre</td>
+                    <td class="titre">Franchise</td>
                     <td></td>
                 </tr>
                <tr data-ng-repeat="garagiste in garagistes">
@@ -43,7 +43,7 @@
                     <input ID="TextBoxNombreVoiture" type="number" data-ng-model="nombreVoiture" class="form-control" min="1"/>
                 </td>
                 <td>
-                    <select ID="TextBoxMarqueVoiture" class="form-control" data-ng-model="marqueVoiture" data-ng-options="voiture.name for voiture in models" ></select>
+                    <select ID="TextBoxMarqueVoiture" class="form-control" data-ng-model="marqueVoiture" data-ng-options="voiture.name for voiture in models" ><option value="">choisir une marque</option></select>
                 </td>
             <td><button class="btn btn-primary" ng-click="AddVoiture()" onclick="return false;"/><i class="fa fa-plus-square-o"></i>&nbsp;Ajouter</td>
             </tr>
@@ -54,9 +54,9 @@
                 <td></td>
             </tr>
             <tr>
-                <td class="control-label">ID</td>
-                <td class="control-label">Nombre</td>
-                <td class="control-label">Voiture</td>
+                <td class="titre">ID</td>
+                <td class="titre">Nombre</td>
+                <td class="titre">Voiture</td>
                 <td></td>
                 
             </tr>

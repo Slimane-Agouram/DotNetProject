@@ -1,8 +1,17 @@
 ﻿/* Move down content because we have a fixed navbar that is 50px tall */
+@font-face {
+    font-family: "MyFont";
+    src: url("../fonts/Roboto-light.ttf");
+
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: "Helvetica";
 }
+
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -25,4 +34,14 @@ input[type="password"] {
     .body-content {
         padding: 0;
     }
+
+    .titre {
+        font-weight: bold;
+    }
+
+    .chart {
+			/*float:left;*/
+			width: 50%;
+			height:400px;
+		}
 }

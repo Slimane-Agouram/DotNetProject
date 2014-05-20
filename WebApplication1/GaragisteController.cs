@@ -11,10 +11,21 @@ namespace GaragisteProjet
 {
     public class GaragisteController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        public GaragisteController()
         {
-            return new string[] { };
+           
+        }
+
+        // GET api/<controller>
+        public Rootobject Get()
+        {
+            string[] series = {"serie1","serie2"};
+            int [] valeurs = new int[2];
+            valeurs[0] = 1;
+            valeurs[1] = 1;
+            Datum[] datum=new Datum[2];
+            datum[0]=new Datum("x",valeurs,"tooltip");
+            return new Rootobject(series,datum);
         }
 
         // GET api/<controller>/5
