@@ -3,8 +3,7 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-   
-
+ 
     <div class="row" data-ng-app="Garagiste_App" data-ng-controller="Ajout_Garagiste_Controller">
         <table class="nav-justified table-striped">
             <tr>

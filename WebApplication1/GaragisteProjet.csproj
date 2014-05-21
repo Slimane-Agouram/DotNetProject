@@ -298,6 +298,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\data.cs" />
+    <Compile Include="Models\dummy.cs" />
     <Compile Include="Models\transmission_Garagiste.cs" />
     <Compile Include="Models\Transmission_Result.cs" />
     <Compile Include="Models\transmission_Voiture.cs" />

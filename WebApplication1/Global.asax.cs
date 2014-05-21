@@ -24,6 +24,11 @@ namespace GaragisteProjet
         routeTemplate: "api/{controller}/{id}",
         defaults: new { id = System.Web.Http.RouteParameter.Optional }
     );
+
+            RouteTable.Routes.MapHttpRoute(
+                name: "Action",
+                routeTemplate: "api/{controller}/{action}"
+                );
         }
     }
 }

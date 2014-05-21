@@ -55,10 +55,39 @@ Garagiste_Controllers.controller('Ajout_Garagiste_Controller', ['$scope','$http'
                 duration: $scope.duration,
                 dateDebut: $scope.dateDebut
             };
-           
+			
+			$scope.stringGaragistesnombres="";
+			for (var i = $scope.garagistes.length - 1; i >= 0; i--) {
+			          $scope.stringGaragistesnombres= $scope.stringGaragistesnombres + '+' +$scope.garagistes[i].nombre;
+			          };   
 
-            $http.post('api/Garagiste', JSON.stringify(resultat));
+			$scope.stringGaragistesFranchises="";
+			for (var i = $scope.garagistes.length - 1; i >= 0; i--) {
+							$scope.stringGaragistesFranchises=$scope.stringGaragistesFranchises+'+'+$scope.garagistes[i].franchise;
+			};
+              
+            $scope.stringVoiturenombre="";
+            for (var i = $scope.voitures.length - 1; i >= 0; i--) {
+              	 $scope.stringVoiturenombre= $scope.stringVoiturenombre + '+' + $scope.voitures[i].nombre;
+              };  
+
+            $scope.stringVoitureVoiture = "";
+            for (var i = $scope.voitures.length - 1; i >= 0; i--) {
+            	 $scope.stringVoiturenombre =  $scope.stringVoiturenombre + '+' + $scope.voitures[i].voiture;
+            };
+
+            //$http.post('api/Garagiste', JSON.stringify(resultat));
+            
+            // $http.get('api/Garagiste/GetAll').success(function(data)
+            // {
+            // 	alert(JSON.stringify(data));
+            // });
+  				
+    	$http.get('api/Garagiste?Garagiste_nombre='+$scope.stringGaragistesnombres + '&Garagiste_franchise=' + $scope.stringGaragistesFranchises + '&Voiture_nombre=' + $scope.stringVoiturenombre +'&Voiture_Voiture=' +  $scope.stringVoitureVoiture+ '&duration='+ $scope.duration + '&dateDebut='+ $scope.dateDebut).success(function(data){alert(JSON.stringify(data));})
+
         };
+
+
         $scope.deleteItem = function(array, index) {
             array.splice(index, 1);
         };
